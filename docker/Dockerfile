@@ -3,6 +3,9 @@ FROM openjdk:8u151-jdk-alpine3.7
 EXPOSE 8070
 
 ENV APP_HOME /usr/src/app
-WORKDIR $APP_HOME
-COPY /var/lib/jenkins/workspace/jenkins/target/shopping-cart-0.0.1-SNAPSHOT.jar $APP_HOME/app.jar
-ENTRYPOINT exec java -jar app.jar
+
+WORKDIR /app
+
+COPY var/lib/jenkins/workspace/jenkins/target/shopping-cart-0.0.1-SNAPSHOT.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
